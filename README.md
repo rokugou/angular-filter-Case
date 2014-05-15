@@ -57,6 +57,28 @@ Yeah, `upper()` and `lower()` accept a second "fill" argument
 that will replace any characters which are not letters or numbers.
 It's handy, sometimes. :)
 
+#Usage
+  download: [Case.min.js][prod]  or  [Case.js][dev] and [CaseFilter.min.js][filter_prod]  or  [CaseFilter.js][filter_dev]
+  [filter_prod]: https://raw.github.com/rokugou/Case/master/dist/CaseFilter.min.js
+  [filter_dev]: https://raw.github.com/rokugou/Case/master/dist/CaseFilter.js
+```javascript
+  <script src="Case.js"></script>
+  <script src="CaseFilter.js"></script>
+
+  var yourApp = angular.module('yourApp', ['CaseFilter']);
+  
+  upper: foo_bar -> {{'foo_bar' | upperCase}}
+  lower: fooBar -> {{'fooBar' | lowerCase}}
+  snake: Foo bar! -> {{'Foo bar!' | snakeCase}}
+  squish: foo.bar -> {{'foo.bar' | squishCase}}
+  camel: foo, bar -> {{'foo, bar' | camelCase}}
+  constant: Foo-Bar -> {{'Foo-Bar' | constantCase}}
+  title: foo v. bar -> {{'foo v. bar' | titleCase}}
+  capital: foo_v_bar -> {{'foo_v_bar' | capitalCase}}
+  sentence: "foo!" said bar -> {{'"foo!" said bar' | sentenceCase:['Bar']}}
+  of: foo_bar -> {{"foo_bar" | ofCase}}
+  flip: FlipMe -> {{"FlipMe" | flipCase}}
+```
 
 ## Release History
 * 2013-06-10 v1.0.0 (public, initial)
