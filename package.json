@@ -1,6 +1,6 @@
 {
   "name": "ngcasefilters",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Angular filters for modifing case, using nbubna's Case library",
   "main": "dist/ngcasefilters.js",
   "dependencies": {
