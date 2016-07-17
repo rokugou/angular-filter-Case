@@ -1,5 +1,6 @@
 {
-  "name": "ngCaseFilter",
+  "name": "ngcasefilter",
+  "version": "1.0.1",
   "homepage": "https://github.com/oaguy1/angular-filter-Case",
   "authors": [
     "David N. Robinson <oaguy1@gmail.com>"
