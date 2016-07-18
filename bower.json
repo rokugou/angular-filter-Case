@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "homepage": "https://github.com/oaguy1/angular-filter-Case",
   "authors": [
-    "David N. Robinson <oaguy1@gmail.com>"
+    "David N. Hughes-Robinson <davidr@medtextapp.com>"
   ],
   "description": "Angular filters for modifing case, using nbubna's Case library",
   "main": "dist/ngcasefilters.js",

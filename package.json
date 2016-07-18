@@ -39,7 +39,7 @@
     "angularjs",
     "filter"
   ],
-  "author": "David N. Hughes-Robinson",
+  "author": "David N. Hughes-Robinson <davidr@medtextapp.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/oaguy1/angular-filter-Case/issues"
