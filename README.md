@@ -1,94 +1,25 @@
-### Case: An extensible utility to convert, identify, and flip string case.
+# ngCaseFilters
 
-Download: [Case.min.js][prod]  or  [Case.js][dev] [![Build Status](https://travis-ci.org/nbubna/Case.png?branch=master)](https://travis-ci.org/nbubna/Case)  
-Bower: `bower install Case`  (note the big 'C')  
-[NPM][npm]: `npm install case`  (little 'c' due to NPM restrictions)  
-[Component][component]: `component install nbubna/Case`  
+[![Build Status](https://travis-ci.org/oaguy1/angular-filter-Case.svg?branch=master)](https://travis-ci.org/oaguy1/angular-filter-Case)
 
-[prod]: https://raw.github.com/nbubna/Case/master/dist/Case.min.js
-[dev]: https://raw.github.com/nbubna/Case/master/dist/Case.js
-[npm]: https://npmjs.org/package/case
+[Case](https://github.com/nbubna/Case) library ported to AngularJS 1.x filters.
 
-## Documentation
-Each of the following functions will first "undo" previous case manipulations
-before applying the desired case to the given string.
 
+###Usage
 ```javascript
-Case.upper('foo_bar')                       -> 'FOO BAR'
-Case.lower('fooBar')                        -> 'foo bar'
-Case.snake('Foo bar!')                      -> 'foo_bar'
-Case.squish('foo.bar')                      -> 'FooBar'
-Case.camel('foo, bar')                      -> 'fooBar'
-Case.constant('Foo-Bar')                    -> 'FOO_BAR'
-Case.title('foo v. bar')                    -> 'Foo v. Bar'
-Case.capital('foo_v_bar')                   -> 'Foo V Bar'
-Case.sentence('"foo!" said bar', ['Bar'])   -> '"Foo!" said Bar'
+<script src="Case.js"></script>
+<script src="ngcasefilters.js"></script>
+
+var yourApp = angular.module('yourApp', ['ngCaseFilters']);
+
+upper: foo_bar -> {{'foo_bar' | upperCase}}
+lower: fooBar -> {{'fooBar' | lowerCase}}
+snake: Foo bar! -> {{'Foo bar!' | snakeCase}}
+squish: foo.bar -> {{'foo.bar' | squishCase}}
+camel: foo, bar -> {{'foo, bar' | camelCase}}
+constant: Foo-Bar -> {{'Foo-Bar' | constantCase}}
+title: foo v. bar -> {{'foo v. bar' | titleCase}}
+capital: foo_v_bar -> {{'foo_v_bar' | capitalCase}}
+sentence: "foo!" said bar -> {{'"foo!" said bar' | sentenceCase:['Bar']}}
+flip: FlipMe -> {{"FlipMe" | flipCase}}
 ```
-
-`sentence(str, names)` accepts an array of proper names that should be capitalized,
-regardless of location in the sentence.  This function is specialized, but useful
-when dealing with input generated with capslock on (i.e. everything my grandma types).
-
-There are three additional functions:
-* `of(str)`: identifies the case of a string, returns undefined if it doesn't match a known type
-* `flip(str)`: reverses the case of letters, no other changes
-* `type(name, fn)`: extends Case with a new case type
-
-```javascript
-Case.of('foo')          -> 'lower'
-Case.of('foo_bar')      -> 'snake'
-Case.of('Foo v Bar')    -> 'title'
-Case.of('foo_ Bar')     -> undefined
-
-Case.flip('FlipMe')     -> 'fLIPmE'
-Case.flip('TEST THIS!') -> 'test this!'
-
-Case.type('bang', function(s) {
-    return Case.upper(s, '!')+'!';
-});
-Case.bang('bang')       -> 'BANG!'
-Case.of('TEST!THIS!')   -> 'bang'
-```
-
-Registering functions via `type()` means `Case.of` supports them automatically.
-
-Oh, did you notice that little `Case.upper(s, '!')`?
-Yeah, `upper()` and `lower()` accept a second "fill" argument
-that will replace any characters which are not letters or numbers.
-It's handy, sometimes. :)
-
-#Usage
-  download: [Case.min.js][prod]  or  [Case.js][dev] and [CaseFilter.min.js][filter_prod]  or  [CaseFilter.js][filter_dev]
-  [filter_prod]: https://raw.github.com/rokugou/Case/master/dist/CaseFilter.min.js
-  [filter_dev]: https://raw.github.com/rokugou/Case/master/dist/CaseFilter.js
-```javascript
-  <script src="Case.js"></script>
-  <script src="CaseFilter.js"></script>
-
-  var yourApp = angular.module('yourApp', ['CaseFilter']);
-  
-  upper: foo_bar -> {{'foo_bar' | upperCase}}
-  lower: fooBar -> {{'fooBar' | lowerCase}}
-  snake: Foo bar! -> {{'Foo bar!' | snakeCase}}
-  squish: foo.bar -> {{'foo.bar' | squishCase}}
-  camel: foo, bar -> {{'foo, bar' | camelCase}}
-  constant: Foo-Bar -> {{'Foo-Bar' | constantCase}}
-  title: foo v. bar -> {{'foo v. bar' | titleCase}}
-  capital: foo_v_bar -> {{'foo_v_bar' | capitalCase}}
-  sentence: "foo!" said bar -> {{'"foo!" said bar' | sentenceCase:['Bar']}}
-  of: foo_bar -> {{"foo_bar" | ofCase}}
-  flip: FlipMe -> {{"FlipMe" | flipCase}}
-```
-
-## Release History
-* 2013-06-10 v1.0.0 (public, initial)
-* 2013-06-20 v1.0.1 (regex improvements)
-* 2013-08-23 v1.0.3 (better support for Node, Component and AMD)
-
-[v1.0.0]: https://github.com/nbubna/store/tree/1.0.0
-[v1.0.1]: https://github.com/nbubna/store/tree/1.0.1
-[v1.0.3]: https://github.com/nbubna/store/tree/1.0.3
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/nbubna/case/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
